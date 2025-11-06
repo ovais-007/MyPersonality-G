@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth"; //check auth
 
 import { google } from "googleapis";
@@ -7,7 +8,7 @@ import { google } from "googleapis";
 export async function GET(request) {
   try {
     
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
 
     if (!session || !session.accessToken) {
       return NextResponse.json(
@@ -16,7 +17,8 @@ export async function GET(request) {
       );
     }
 
-
+    console.log("iam here");
+    
     const oauth2Client = new google.auth.OAuth2();
     oauth2Client.setCredentials({
       access_token: session.accessToken,
@@ -57,7 +59,8 @@ export async function GET(request) {
 
     const filteredEmails = emails.filter(email => email.trim() !== "");
 
-    
+    //console.log( JSON.stringify(filteredEmails));
+
     return NextResponse.json({ emails: filteredEmails });
 
   } catch (error) {

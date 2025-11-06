@@ -10,7 +10,7 @@ export default function MBTIPage() {
 
   const [loading, setLoading] = useState(false); //conditional rendering
 
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState( "lorem epsum" );
 
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function MBTIPage() {
       
       setResult(analysis);
     } catch (error) {
-      alert("Error: " + error.message);
+      alert("Error:" + error.message);
     } finally {
       setLoading(false);
     }
@@ -82,8 +82,8 @@ export default function MBTIPage() {
 
           {result && (
             <div className="bg-white rounded-lg p-6">
-              <h2 className="text-2xl text-red-200 font-bold mb-4">Results</h2>
-              <p className="whitespace-pre-wrap text-red-300">{result}</p>
+              <h2 className="text-2xl text-gray-600 font-bold mb-4">Results</h2>
+              <p className="whitespace-pre-wrap text-black">{result}</p>
             </div>
           )}
         </div>
