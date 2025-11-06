@@ -4,23 +4,19 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
-export default function MBTIPage() {
+export default function Big5Page() {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  const [loading, setLoading] = useState(false); //conditional rendering
-
+  const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
 
-
-  useEffect(() => {
+    useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/");
     }
   }, [status, router]);
 
-
-  
   if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -36,7 +32,7 @@ export default function MBTIPage() {
       const emailsRes = await axios.get("/api/fetch-emails");
       const { emails } = emailsRes.data;
 
-      const analysisRes = await axios.post("/api/analyze/mbti", { emails });
+      const analysisRes = await axios.post("/api/analyze/big5", { emails });
       const { analysis } = analysisRes.data;
       
       setResult(analysis);
@@ -60,7 +56,7 @@ export default function MBTIPage() {
         <div className="bg-gray-500 rounded-lg p-8">
           
           <h1 className="text-3xl font-bold text-center mb-8">
-            MBTI Analysis
+            Big Five Analysis
           </h1>
 
           {!result && !loading && (
