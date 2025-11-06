@@ -22,7 +22,7 @@ export default function Home() {
 
         <button
           onClick={() => signIn("google")}
-          className="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center w-full"
+          className="bg-blue-600 text-white hover:scale-105 font-bold py-3 px-6 rounded-lg flex items-center justify-center w-full"
         >
           Sign in with Google
         </button>

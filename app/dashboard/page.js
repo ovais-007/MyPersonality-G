@@ -33,7 +33,7 @@ export default function Dashboard() {
                     </div>
                     <button
                         onClick={() => signOut()}
-                        className="bg-gray-800 text-white px-4 py-2 rounded-lg"
+                        className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:scale-105"
                     >
                         Sign Out
                     </button>
