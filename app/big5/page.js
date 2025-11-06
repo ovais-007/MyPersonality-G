@@ -79,7 +79,7 @@ export default function Big5Page() {
           {result && (
             <div className="bg-white rounded-lg p-6">
               <h2 className="text-2xl text-red-200 font-bold mb-4">Results</h2>
-              <p className="whitespace-pre-wrap text-red-300">{result}</p>
+              <p className="whitespace-pre-wrap text-black">{result}</p>
             </div>
           )}
         </div>

@@ -10,7 +10,7 @@ export default function MBTIPage() {
 
   const [loading, setLoading] = useState(false); //conditional rendering
 
-  const [result, setResult] = useState( "lorem epsum" );
+  const [result, setResult] = useState( null );
 
 
   useEffect(() => {
