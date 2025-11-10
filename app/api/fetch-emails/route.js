@@ -17,7 +17,7 @@ export async function GET(request) {
       );
     }
 
-    console.log("iam here");
+    //console.log("iam here");
     
     const oauth2Client = new google.auth.OAuth2();
     oauth2Client.setCredentials({
@@ -29,11 +29,22 @@ export async function GET(request) {
 
     const response = await gmail.users.messages.list({
       userId: "me",
-      maxResults: 40,
+      maxResults: 5,
       q: "in:sent",
     });
 
     const messages = response.data.messages || [];
+
+
+    if (messages.length === 0) {
+      return NextResponse.json(
+        { 
+          error: "No sent emails found",
+          message: "It looks like you haven't sent any emails yet. Please send a few emails first and try again."
+        },
+        { status: 404 }
+      );
+    }
 
     const emails = await Promise.all(
 
@@ -58,6 +69,17 @@ export async function GET(request) {
     );
 
     const filteredEmails = emails.filter(email => email.trim() !== "");
+
+    // no content
+    if (filteredEmails.length === 0) {
+      return NextResponse.json(
+        { 
+          error: "No email content found",
+          message: "Your sent emails don't contain enough text content for analysis. Please send some emails with text and try again."
+        },
+        { status: 404 }
+      );
+    }
 
     //console.log( JSON.stringify(filteredEmails));
 
