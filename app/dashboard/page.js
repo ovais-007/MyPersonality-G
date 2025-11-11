@@ -45,19 +45,26 @@ export default function Dashboard() {
                         Choose Analysis Type
                     </h2>
 
-                    <div className="flex justify-around">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                         <div
                             onClick={() => router.push("/mbti")}
-                            className="bg-gray-400 flex items-center rounded-lg p-8 hover:scale-105 transition transform shadow-xl"
+                            className="bg-gray-400 flex flex-col items-center justify-center rounded-lg p-8 hover:scale-105 transition transform shadow-xl cursor-pointer"
                         >
-                            <h3 className="text-center text-white text-2xl font-bold mb-2 ">MBTI Type</h3>
+                            <h3 className="text-center text-white text-2xl font-bold">MBTI Type</h3>
                         </div>
 
                         <div
                             onClick={() => router.push("/big5")}
-                            className="bg-gray-400 flex items-center rounded-lg p-8 hover:scale-105 transition transform shadow-xl"
+                            className="bg-gray-400 flex flex-col items-center justify-center rounded-lg p-8 hover:scale-105 transition transform shadow-xl cursor-pointer"
                         >
-                            <h3 className="text-2xl font-bold mb-2">Big Five</h3>
+                            <h3 className="text-2xl font-bold text-white">Big Five</h3>
+                        </div>
+
+                        <div
+                            onClick={() => router.push("/astrology")}
+                            className="bg-gray-400 flex flex-col items-center justify-center rounded-lg p-8 hover:scale-105 transition transform shadow-xl cursor-pointer md:col-span-2"
+                        >
+                            <h3 className="text-2xl font-bold text-white">Astrology</h3>
                         </div>
                     </div>
 
