@@ -29,7 +29,7 @@ export async function GET(request) {
 
     const response = await gmail.users.messages.list({
       userId: "me",
-      maxResults: 5,
+      maxResults: 10,
       q: "in:sent",
     });
 
